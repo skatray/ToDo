@@ -10,10 +10,24 @@ namespace ToDo.Controllers
 {
     public class HomeController : Controller
     {
+        ListContext db;
+
+        public HomeController(ListContext context)
+        {
+            db = context;
+        }
+
+
         public IActionResult Index()
         {
-            return View();
+            return View(db.Lists.ToList());
         }
+
+
+        /*  public IActionResult Index()
+          {
+              return View();
+          } */
 
         public IActionResult About()
         {
